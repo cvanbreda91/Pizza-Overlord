@@ -1,0 +1,25 @@
+{
+  "name": "pizza-overlord",
+  "version": "1.0.0",
+  "description": "Object-Oriented Programming Challenge: Team Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cvanbreda91/Pizza-Overlord.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cvanbreda91/Pizza-Overlord/issues"
+  },
+  "homepage": "https://github.com/cvanbreda91/Pizza-Overlord#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.0.2"
+  }
+}

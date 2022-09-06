@@ -3,10 +3,17 @@ const Employee = require('./lib/Employee.js');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
+const fs = require('fs');
+const writeFile = require ('./utils/generateHTML');
 
 
-const questionsEmployee = (data) => {
-    //Create an array of questions for user input
+
+class QuestionsEmployee  {
+        constructor() {
+this.managerArray = []
+        }
+
+    initializeQuestions(){
     return inquirer.prompt([
       {
         type: 'text',
@@ -35,6 +42,19 @@ const questionsEmployee = (data) => {
         }
       },
       {
+        type: 'text',
+        name: 'id',
+        message: "What is the employee's unique ID?",
+        validate: getId => {
+            if (getId) {
+              return true;
+            } else {
+              console.log("Please enter the employee's ID!");
+              return false;
+            }
+        }
+      },
+      {
         type: 'checkbox',
         name: 'role',
         message: 'Please choose the role this employee performs',
@@ -50,18 +70,14 @@ const questionsEmployee = (data) => {
       
     ]).then(({
       //define variables
-        name,
+       name,
         email,
-        role
+        id,
+        role,
     })=>{
-//create template
-    //Call functions from Employee.js
-   new Employee().getName(name);
-   new Employee().getId();
-   new Employee().getEmail(email);
-   new Employee().getRole(role);
 
-   if (role == 'Manager') {
+     if (role == 'Manager') {
+
     return inquirer.prompt ([{
         type: 'text',
         name: 'officeNumber',
@@ -77,8 +93,15 @@ const questionsEmployee = (data) => {
         ]).then(({
             officeNumber,
         }) =>{
-            new Manager().getOfficeNumber(officeNumber);
-            new Manager().getRole()
+           this.managerArray.push (new Manager (
+            `${name}`,
+            `${email}`,
+            `${id}`,
+            `Manager`,
+            `${officeNumber}`
+            ));
+
+
         })
           }
 
@@ -125,10 +148,65 @@ const questionsEmployee = (data) => {
             })
 
     }   
-})}
+}).then(()=>{ return inquirer.prompt([
+    {
+      type: 'checkbox',
+      name: 'repeat',
+      message: 'Would you like to add another team member?',
+      choices: ['yes','no'],
+      validate: getRepeat => {
+          if (getRepeat) {
+            return true;
+          } else {
+            console.log('Please choose an option!');
+            return false;
+          }
+    }
+}
+  ]).then(({
+    //define variables
+    repeat
+  })=>{
 
-//call questions function
-questionsEmployee()
+ if (repeat == 'yes') {
+this.initializeQuestions()
+        }
+        if (repeat == 'no') {
+            console.log(this.managerArray[0]);
+            console.table(this.managerArray);
+            console.log(this.managerArray[1])
+                    }
+})
+.then(()=>{
+const template =`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Team</title>
+</head>
+<body>
+    <header>
+        My Team
+    </header>
+    <div class="cards" id = "card">
+    </div>
+</body>
+    
+</body>
+</html>`;
+
+writeFile.generateHTML(template)
+});
+
+})}}
+
+new QuestionsEmployee().initializeQuestions()
+
+//ask if user would like to enter more team members
+//if finished, generate HTML
 
 
 

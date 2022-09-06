@@ -189,6 +189,7 @@ this.initializeQuestions()
         if (repeat == 'no') {
 const combinedArray = [...this.managerArray,...this.engineerArray,...this.internArray]
 console.log (combinedArray[0],combinedArray[0].email)
+//add for loop to iterate over all objects in array and create cards of each employee
 templateAdd = `<p>${combinedArray[0].email}</p>`
                     }
 })

@@ -1,16 +1,18 @@
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee.js');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const fs = require('fs');
 const writeFile = require ('./utils/generateHTML');
+var templateAdd = "1";
 
 
 
 class QuestionsEmployee  {
         constructor() {
 this.managerArray = []
+this.engineerArray = []
+this.internArray = []
         }
 
     initializeQuestions(){
@@ -30,19 +32,6 @@ this.managerArray = []
       },
       {
         type: 'text',
-        name: 'email',
-        message: "What is the employee's email?",
-        validate: getEmail => {
-            if (getEmail) {
-              return true;
-            } else {
-              console.log("Please enter the employee's email!");
-              return false;
-            }
-        }
-      },
-      {
-        type: 'text',
         name: 'id',
         message: "What is the employee's unique ID?",
         validate: getId => {
@@ -53,6 +42,21 @@ this.managerArray = []
               return false;
             }
         }
+      },
+      {
+
+            type: 'text',
+            name: 'email',
+            message: "What is the employee's email?",
+            validate: getEmail => {
+                if (getEmail) {
+                  return true;
+                } else {
+                  console.log("Please enter the employee's email!");
+                  return false;
+                }
+            }
+        
       },
       {
         type: 'checkbox',
@@ -71,8 +75,8 @@ this.managerArray = []
     ]).then(({
       //define variables
        name,
-        email,
         id,
+        email,
         role,
     })=>{
 
@@ -95,8 +99,8 @@ this.managerArray = []
         }) =>{
            this.managerArray.push (new Manager (
             `${name}`,
-            `${email}`,
             `${id}`,
+            `${email}`,
             `Manager`,
             `${officeNumber}`
             ));
@@ -122,8 +126,14 @@ this.managerArray = []
         ]).then(({
             github,
         }) =>{
-            new Engineer().getGithub(github);
-            new Engineer().getRole()
+            this.engineerArray.push (new Engineer (
+                `${name}`,
+                `${id}`,
+                `${email}`,
+                `Engineer`,
+                `${github}`
+                ));
+
         })
     }
     if (role == 'Intern') {
@@ -143,8 +153,13 @@ this.managerArray = []
             ]).then(({
                 school,
             }) =>{
-                new Intern().getSchool(school);
-                new Intern().getRole()
+                this.internArray.push (new Intern (
+                    `${name}`,
+                    `${id}`,
+                    `${email}`,
+                    `Intern`,
+                    `${school}`
+                    ));
             })
 
     }   
@@ -172,9 +187,9 @@ this.managerArray = []
 this.initializeQuestions()
         }
         if (repeat == 'no') {
-            console.log(this.managerArray[0]);
-            console.table(this.managerArray);
-            console.log(this.managerArray[1])
+const combinedArray = [...this.managerArray,...this.engineerArray,...this.internArray]
+console.log (combinedArray[0],combinedArray[0].email)
+templateAdd = `<p>${combinedArray[0].email}</p>`
                     }
 })
 .then(()=>{
@@ -192,6 +207,7 @@ const template =`
         My Team
     </header>
     <div class="cards" id = "card">
+    ${templateAdd}
     </div>
 </body>
     

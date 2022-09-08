@@ -192,38 +192,44 @@ this.initializeQuestions()
           const appendCards = () => { 
           cards = 
            `<div class="row">
+            <div class ="col-4">
               <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                   `+combinedArray[0].name+`
+                <div class="card-body">
+                <h5 class="card-title">`+combinedArray[0].name+`</h5>
+                <p class="card-text">`+combinedArray[0].role+`</p>
                 </div>
                 <ul class="list-group list-group-flush">
                  <li class="list-group-item">ID: `+combinedArray[0].id+`</li>
                  <li class="list-group-item" ><a href="mailto:`+combinedArray[0].email+`">email: `+combinedArray[0].email+`</a></li>
-                 <li class="list-group-item">Role: `+combinedArray[0].role+`</li>
                  <li class="list-group-item">Office Number: `+combinedArray[0].officeNumber+`</li>
                  </ul>
                 </div>
+                </div>
+                <div class ="col-4">
                 <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                   `+combinedArray[1].name+`
+                <div class="card-body">
+                <h5 class="card-title">`+combinedArray[1].name+`</h5>
+                <p class="card-text">`+combinedArray[1].role+`</p>
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: `+combinedArray[1].id+`</li>
                 <li class="list-group-item" ><a href="mailto:`+combinedArray[1].email+`">email: `+combinedArray[1].email+`</a></li>
-                <li class="list-group-item">Role: `+combinedArray[1].role+`</li>
                 <li class="list-group-item"> <a  target="_blank" href="https://github.com/`+combinedArray[1].github+`">Github: `+combinedArray[1].github+`</a></li>
                  </ul>
                 </div>
+                </div>
+                <div class ="col-4">
                 <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                   `+combinedArray[2].name+`
+                <div class="card-body">
+                <h5 class="card-title">`+combinedArray[2].name+`</h5>
+                <p class="card-text">`+combinedArray[2].role+`</p>
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: `+combinedArray[2].id+`</li>
                 <li class="list-group-item" ><a href="mailto:`+combinedArray[2].email+`">email: `+combinedArray[2].email+`</a></li>
-                <li class="list-group-item">Role: `+combinedArray[2].role+`</li>
                 <li class="list-group-item">School: `+combinedArray[2].school+`</li>
                  </ul>
+                </div>
                 </div>
               </div>
             </div>`
@@ -238,14 +244,10 @@ this.initializeQuestions()
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-    crossorigin="anonymous"/>
-    <link rel="stylesheet" href="./assets/css/style.css">
+              rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+              <link rel="stylesheet" href="./assets/css/style.css">
+              <link rel="website icon" href="https://i2.wp.com/rentagameshow.com/wp-content/uploads/2016/01/teamwork-clipart-with-team-work-bigstock-teamwork-48863816-clipart-e1453842326912.jpg"/>
               <title>My Team</title>
           </head>
           <body>

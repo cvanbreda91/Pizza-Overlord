@@ -44,4 +44,4 @@ Please email me with questions!
 ![website-image](https://github.com/cvanbreda91/Pizza-Overlord/blob/main/dist/assets/images/website.png?raw=true)
 
 ## Video
-Link to Google Drive: https://drive.google.com/file/d/1UrVXbDxpW-fTEoxYtYaQfyS_xtKgNtzx/view?usp=sharing
+Link to Google Drive: https://drive.google.com/file/d/1HO1id_RIwcU4_nNjVCYloljbpek2Vaqp/view?usp=sharing

@@ -2,10 +2,11 @@
 //Include packages needed for this application
 const fs = require('fs');
 
-const generateHTML = (template) =>
+const generateHTML= (template) =>
 fs.writeFile(`./dist/my-team.html`, template, function (err) {
   if (err) throw err;
-  console.log('Saved!');
 })
+
+
 
 module.exports = {generateHTML};

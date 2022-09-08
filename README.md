@@ -41,7 +41,7 @@ Please email me with questions!
 * cvanbreda91@gmail.com
 
 ## Screenshot
-![website-image](https://github.com/cvanbreda91/Pizza-Overlord/blob/main/images/website.png?raw=true)
+![website-image](https://github.com/cvanbreda91/Pizza-Overlord/blob/main/dist/assets/images/website.png?raw=true)
 
 ## Video
 ![video-link](https://drive.google.com/file/d/152w2s0KBDNieEVGTv26uKBHSExFgcBDi/view)
